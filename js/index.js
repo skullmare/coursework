@@ -155,8 +155,10 @@ const eventbtnLoadGuides = () => {
 
 }
 
+
+// функция усечения текста
 function truncate(str, max) {
-    return str.length > max ? str.substr(0, max - 1) + '' : str;
+    return str.length > max ? str.substr(0, max - 1) + '...' : str;
 }
 
 
@@ -164,16 +166,22 @@ function truncate(str, max) {
 const renderOptionMainObject = (DATA) => {
     let selectMainObjects = document.querySelector('.selectMainObjects');
     let template = document.querySelector('#optionMainObject');
-    let strMainObjects = ''
+    let arrayMainObjects = []
+    let splitMainObject = []
+    let finalArrayMainObject = []
     for (let i = 0; i < DATA.length; i++) {
-        strMainObjects = strMainObjects + DATA[i].mainObject;
+        arrayMainObjects.push(DATA[i].mainObject);
+    }    
+    for (let i = 0; i < arrayMainObjects.length; i++) {
+        splitMainObject = arrayMainObjects[i].split(/\-|–|—/);
+        finalArrayMainObject.push(splitMainObject)
     }
-    let arrayMainObject = strMainObjects.split(/\-|–|—/)
+    finalArrayMainObject = finalArrayMainObject.flat()
     // -----------------------------------
-    for (let i = 0; i < arrayMainObject.length; i++) {
+    for (let i = 0; i < finalArrayMainObject.length; i++) {
         let clone = template.content.cloneNode(true);
         let optionMainObject = clone.querySelector('.optionMainObject');
-        optionMainObject.textContent = truncate(arrayMainObject[i], 50);
+        optionMainObject.textContent = truncate(finalArrayMainObject[i], 60); // усекаем строки и добавляем троеточие
         selectMainObjects.append(clone);
     }
 }
@@ -187,7 +195,11 @@ const eventSelectMainObject = () => {
     let selectMainObjects = document.querySelector('.selectMainObjects');
     // -----------------------------------
     selectMainObjects.addEventListener('change', function () {
-        searchMainObject = selectMainObjects.value;
+        if ((selectMainObjects.value).length > 60) {
+            searchMainObject = (selectMainObjects.value).slice(0,-3); // убираем точки в конце
+        } else {
+            searchMainObject = selectMainObjects.value;
+        }
         if (searchMainObject == 'Не выбрано') {
             searchMainObject = '';
         }
