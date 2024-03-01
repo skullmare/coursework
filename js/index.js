@@ -30,16 +30,17 @@ function go() {
 
 
         // -----------------------------------
-        if (searchMainObject != null) {
-            DataSearch = Data.filter(function (Data) {
-                return Data.mainObject.includes(searchMainObject);
-            });
-        }
         if (searchName != null) {
             DataSearch = Data.filter(function (Data) {
                 return Data.name.includes(searchName);
             });
         }
+        if (searchMainObject != null) {
+            DataSearch = Data.filter(function (Data) {
+                return Data.mainObject.includes(searchMainObject);
+            });
+        }
+
 
 
         // -----------------------------------
@@ -90,10 +91,12 @@ const renderRoutes = (DATA, countRecords) => {
         let name = clone.querySelector('.name');
         let description = clone.querySelector('.description');
         let mainObject = clone.querySelector('.mainObject');
+        let btnLoadGuides = clone.querySelector('.btnLoadGuides')
         try {
             name.textContent = DATA[i].name;
             description.textContent = DATA[i].description;
             mainObject.textContent = DATA[i].mainObject;
+            btnLoadGuides.id = DATA[i].id;
             routes.append(clone);
         }
         catch {
@@ -101,10 +104,8 @@ const renderRoutes = (DATA, countRecords) => {
 
 
     }
+    eventbtnLoadGuides();
     // -----------------------------------
-    // page = 1
-    // DataSearch = null;
-    // search = null;
 }
 
 
@@ -143,7 +144,16 @@ const eventBtnPages = () => {
         })
     }
 }
+const eventbtnLoadGuides = () => {
+    let btnLoadGuides = document.querySelectorAll('.btnLoadGuides')
+    // -----------------------------------
+    for (let i = 0; i < btnLoadGuides.length; i++) {
+        btnLoadGuides[i].addEventListener('click', function () {
+            console.log(btnLoadGuides[i].id)
+        })
+    }
 
+}
 
 function truncate(str, max) {
     return str.length > max ? str.substr(0, max - 1) + '' : str;
@@ -177,17 +187,22 @@ const eventSelectMainObject = () => {
     let selectMainObjects = document.querySelector('.selectMainObjects');
     // -----------------------------------
     selectMainObjects.addEventListener('change', function () {
-        searchMainObject = selectMainObjects.value
-        page = 1
-        go()
+        searchMainObject = selectMainObjects.value;
+        if (searchMainObject == 'Не выбрано') {
+            searchMainObject = '';
+        }
+        page = 1;
+        searchName = null;
+        go();
     })
 }
 
-let inputSearch = document.querySelector('.inputSearch')
+let inputSearch = document.querySelector('.inputSearch');
 inputSearch.addEventListener('input', function () {
-    searchName = inputSearch.value
-    page = 1
-    go()
+    searchName = inputSearch.value;
+    page = 1;
+    searchMainObject = null;
+    go();
 })
 
 
