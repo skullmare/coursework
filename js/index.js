@@ -7,7 +7,7 @@ let DataSearch = null;
 let searchMainObject = null;
 let searchName = null;
 
-let isResizeble = false;
+let flagRenderOptionMainObject = false;
 
 // загрузка JSON из API
 function loadDATA() {
@@ -30,15 +30,17 @@ function go() {
 
 
         // -----------------------------------
+        
         if (searchName != null) {
             DataSearch = Data.filter(function (Data) {
                 return Data.name.includes(searchName);
             });
-        }
-        if (searchMainObject != null) {
+        }else if (searchMainObject != null) {
             DataSearch = Data.filter(function (Data) {
                 return Data.mainObject.includes(searchMainObject);
             });
+        }else {
+            DataSearch = null;
         }
 
 
@@ -53,9 +55,9 @@ function go() {
 
         // -----------------------------------
 
-        if (!isResizeble) {
+        if (!flagRenderOptionMainObject) {
             renderOptionMainObject(Data)
-            isResizeble = true;
+            flagRenderOptionMainObject = true;
         }
 
 
@@ -201,7 +203,7 @@ const eventSelectMainObject = () => {
             searchMainObject = selectMainObjects.value;
         }
         if (searchMainObject == 'Не выбрано') {
-            searchMainObject = '';
+            searchMainObject = null;
         }
         page = 1;
         searchName = null;
@@ -211,7 +213,10 @@ const eventSelectMainObject = () => {
 
 let inputSearch = document.querySelector('.inputSearch');
 inputSearch.addEventListener('input', function () {
-    searchName = inputSearch.value;
+    searchName = inputSearch.value;   
+    if (searchName == '') {
+        searchName = null;
+    } 
     page = 1;
     searchMainObject = null;
     go();
