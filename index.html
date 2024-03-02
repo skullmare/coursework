@@ -6,13 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
 </head>
 
 <body class="container">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Оформление заявки</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
+                    <button type="button" class="btn btn-primary">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="titleRoutes text-center display-3 my-5">Список пешеходных маршрутов</div>
     <nav class="d-flex justify-content-between row">
         <div class="col">
@@ -50,21 +65,19 @@
         <nav class="blockBtns btn-group" role="group"></nav>
     </div>
     <div class="guidesBlock">
-        <div class="titleGuides text-center display-5 my-5">Доступные гиды по маршруту</div>
+        <div class="titleGuides text-center display-5 my-5"></div>
         <nav class="d-flex justify-content-between row">
             <div class="col d-flex">
                 <div class="w-50 text-end mx-2">Языки экскурсии</div>
-                <select class="selectMainObjects form-select">
-                    <option selected></option>
-                </select>
+                <select class="selectLanguages form-select"></select>
             </div>
             <div class="col d-flex">
                 <div>Опыт работы</div>
                 <div class="d-flex">
-                    <div class="mx-2">от</div><input class="form-control" type="text">
+                    <div class="mx-2">от</div><input class="fromYears form-control" type="text">
                 </div>
                 <div class="d-flex">
-                    <div class="mx-2">до</div><input class="form-control" type="text">
+                    <div class="mx-2">до</div><input class="toYears form-control" type="text">
                 </div>
             </div>
         </nav>
@@ -77,7 +90,6 @@
                         <td class="fw-bold">Языки</td>
                         <td class="fw-bold">Опыт работы</td>
                         <td class="fw-bold">Стоимость услуг в час</td>
-                        <td class="fw-bold"></td>
                         <td></td>
                     </tr>
                 </thead>
@@ -93,7 +105,7 @@
         </div>
     </div>
     <template id="route">
-        <tr>
+        <tr class="route">
             <td class="name"></td>
             <td class="description"></td>
             <td class="mainObject"></td>
@@ -101,21 +113,32 @@
         </tr>
     </template>
     <template id="btnPage">
-        <input class="btnPage btn btn-outline-secondary" type="button" value="">
+        <input class="btnPage btn btn-outline-primary" type="button" value="">
     </template>
     <template id="optionMainObject">
-        <option class="optionMainObject text-break"></option>
+        <option class="optionMainObject"></option>
     </template>
     <template id="guide">
-        <td><img src="svg/person.svg" alt="person" width="50px" height="50px"></td>
-        <td class="nameGuide"></td>
-        <td class="language"></td>
-        <td class="workExperience"></td>
-        <td class="pricePerHour"></td>
-        <td><input class="btn btn btn-primary" type="button" value="Выбрать"></td>
+        <tr class="guide">
+            <td><img src="svg/person.svg" alt="person" width="50px" height="50px"></td>
+            <td class="nameGuide"></td>
+            <td class="language"></td>
+            <td class="workExperience"></td>
+            <td class="pricePerHour"></td>
+            <td><input class="btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"
+                    value="Выбрать"></td>
+        </tr>
+    </template>
+    <template id="optionLanguage">
+        <option class="optionLanguage"></option>
     </template>
 </body>
 
 <script src="js/index.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 
 </html>
