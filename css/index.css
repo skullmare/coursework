@@ -3,5 +3,15 @@
     background-color: #ffe761;
 }
 .route {
-    line-height: 15px;
+    line-height: 20px;
+}
+.logo {
+    width: 100px;
+}
+.brown-block {
+    background-color: #7955484d;
+    color: rgb(69, 5, 5);
+}
+footer {
+    background: ghostwhite;
 }

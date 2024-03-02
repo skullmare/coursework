@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 
-<body class="container">
+<body>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -28,43 +28,156 @@
             </div>
         </div>
     </div>
-    <div class="titleRoutes text-center display-3 my-5">Список пешеходных маршрутов</div>
-    <nav class="d-flex justify-content-between row">
-        <div class="col">
-            Поиск по названию
-            <input class="inputSearch form-control" type="text">
-        </div>
-        <div class="col">
-            Поиск по объекту
-            <select class="selectMainObjects form-select">
-                <option selected>Не выбрано</option>
-            </select>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex flex-wrap" href="#">
+                <img class="logo mx-4" src="img/logo.png" alt="">
+                <div>
+                    <div class="logo-text fw-bold">TravelMoscow</div>
+                    <div class="title-logo-text">Экскурсии по Москве</div>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto" style="margin-right: 0px !important;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#flagRoutes">Маршруты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">Контакты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Личный кабинет</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <td class="fw-bold">Название</td>
-                    <td class="fw-bold">Описание</td>
-                    <td class="fw-bold">Основные объекты</td>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody class="routes">
-                <td colspan="4">
-                    <div class="d-flex justify-content-center py-5">
-                        <div class="spinner-border text-primary" style="width: 10rem; height: 10rem;" role="status">
-                        </div>
+    <div class="brown-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 py-5">
+                    <img src="img/about-photo.jpeg" class="img-fluid img-thumbnail" alt="">
+                </div>
+                <div class="col-xl-6 pb-5">
+                    <div class="title display-1">О нас</div>
+                    <div class="text fs-5">
+                        TravelMoscow - Ваш надежный спутник в исследовании Москвы!
+                        Уже более 10 лет мы занимаемся организацией экскурсий по всей Москве и её окрестностям. За это
+                        время мы успели поработать с тысячами туристов и местных жителей, и каждый из них остался
+                        доволен нашей работой.
+                        В нашем арсенале вы найдете как классические обзорные экскурсии по главным
+                        достопримечательностям города, так и необычные авторские маршруты, позволяющие окунуться в
+                        атмосферу настоящей Москвы. Мы также организуем экскурсии на русском языке для иностранных
+                        гостей и индивидуальные туры по запросу.
                     </div>
-                </td>
-            </tbody>
-        </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="table-responsive text-center">
-        <nav class="blockBtns btn-group" role="group"></nav>
+    <div class="text-center display-3 py-5">Наши преимущества</div>
+    <div class="container d-flex flex-wrap justify-content-center">
+        <div class="card m-4" style="width: 18rem;">
+            <img src="img/card1.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Большой выбор</h5>
+                <p class="card-text">TravelMoscow предлагает широкий спектр экскурсионных программ по Москве и ее
+                    окрестностям</p>
+            </div>
+        </div>
+        <div class="card m-4" style="width: 18rem;">
+            <img src="img/card2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Профессиональные и опытные гиды</h5>
+                <p class="card-text">Профессиональные гиды компании помогут сделать путешествие ярким и
+                    запоминающимся
+                </p>
+            </div>
+        </div>
+        <div class="card m-4" style="width: 18rem;">
+            <img src="img/card3.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Надежность</h5>
+                <p class="card-text">TravelMoscow гарантирует надежность, безопасность и комфорт для своих клиентов
+                </p>
+            </div>
+        </div>
+        <div class="card m-4" style="width: 18rem;">
+            <img src="img/card4.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Удобство бронирования</h5>
+                <p class="card-text">Вы можете подать заявку на экскурсию онлайн на нашем сайте или связаться с
+                    нашим
+                    менеджером для получения дополнительной информации</p>
+            </div>
+        </div>
+        <div class="card m-4" style="width: 18rem;">
+            <img src="img/card5.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Скидки и акции</h5>
+                <p class="card-text">Следите за нашими акциями и предложениями, чтобы сэкономить на путешествиях и
+                    получить еще больше удовольствия от отдыха</p>
+            </div>
+        </div>
+        <div class="card m-4" style="width: 18rem;">
+            <img src="img/card6.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Индивидуальный подход</h5>
+                <p class="card-text">мы учитываем все ваши пожелания и предпочтения при планировании вашего отдыха
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="guidesBlock">
+
+    <a id="flagRoutes" href=""></a>
+    <div class="routesBlock container">
+        <div class="titleRoutes text-center display-3 my-5">Список пешеходных маршрутов</div>
+        <nav class="d-flex justify-content-between row">
+            <div class="col">
+                Поиск по названию
+                <input class="inputSearch form-control" type="text">
+            </div>
+            <div class="col">
+                Поиск по объекту
+                <select class="selectMainObjects form-select">
+                    <option selected>Не выбрано</option>
+                </select>
+            </div>
+        </nav>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <td class="fw-bold">Название</td>
+                        <td class="fw-bold">Описание</td>
+                        <td class="fw-bold">Основные объекты</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody class="routes">
+                    <td colspan="4">
+                        <div class="d-flex justify-content-center py-5">
+                            <div class="spinner-border text-primary" style="width: 10rem; height: 10rem;" role="status">
+                            </div>
+                        </div>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive text-center">
+            <nav class="blockBtns btn-group" role="group"></nav>
+        </div>
+    </div>
+
+
+    <a id="flagGuides" href=""></a>
+    <div class="guidesBlock container">
         <div class="titleGuides text-center display-5 my-5"></div>
         <nav class="d-flex justify-content-between row">
             <div class="col d-flex">
@@ -103,13 +216,27 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </div>\<a id="contacts" href=""></a>
+    <footer class="py-5 mt-5">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Telegram: @jhonbiack</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Email: ostapchuk.ivan.2003@gmail.com</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Phone:+7(901)597-59-10</a>
+            </li>
+        </ul>
+    </footer>
     <template id="route">
         <tr class="route">
             <td class="name"></td>
             <td class="description"></td>
             <td class="mainObject"></td>
-            <td><input id="" class="btnLoadGuides btn btn-primary" type="button" value="Выбрать"></td>
+            <td><a href="#flagGuides"><input id="" class="btnLoadGuides btn btn-primary" type="button"
+                        value="Выбрать"></a></td>
         </tr>
     </template>
     <template id="btnPage">
@@ -120,13 +247,13 @@
     </template>
     <template id="guide">
         <tr class="guide">
-            <td><img src="svg/person.svg" alt="person" width="50px" height="50px"></td>
-            <td class="nameGuide"></td>
-            <td class="language"></td>
-            <td class="workExperience"></td>
-            <td class="pricePerHour"></td>
-            <td><input class="btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"
-                    value="Выбрать"></td>
+            <td class="align-middle"><img src="svg/person.svg" alt="person" width="50px" height="50px"></td>
+            <td class="nameGuide align-middle"></td>
+            <td class="language align-middle"></td>
+            <td class="workExperience align-middle"></td>
+            <td class="pricePerHour align-middle"></td>
+            <td class="align-middle"><input class="btn btn btn-primary " data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" type="button" value="Выбрать"></td>
         </tr>
     </template>
     <template id="optionLanguage">
@@ -139,6 +266,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 
 </html>
