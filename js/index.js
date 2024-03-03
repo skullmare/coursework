@@ -11,7 +11,7 @@ let selectedRouteName = null; // название выбранного марш�
 let DataGuides = null; // массив всех гидов
 let searchLanguage = null; // переменная с результатом поиска по языкам
 let DataGuidesSearch = null; // массив гидов по результату поиска
-
+let selectedGuideId = null; // айди выбранного гида
 
 
 // загрузка JSON из API
@@ -183,12 +183,15 @@ const renderGuides = (DataGuides) => {
         let language = clone.querySelector('.language');
         let workExperience = clone.querySelector('.workExperience');
         let pricePerHour = clone.querySelector('.pricePerHour');
+        let btnLoadApplication = clone.querySelector('.btnLoadApplication');
         nameGuide.textContent = DataGuides[i].name;
         language.textContent = DataGuides[i].language;
         workExperience.textContent = DataGuides[i].workExperience;
         pricePerHour.textContent = DataGuides[i].pricePerHour + ' ₽';
+        btnLoadApplication.id = DataGuides[i].id;
         guides.append(clone)
     }
+    eventbtnLoadApplication();
 }
 
 
@@ -238,6 +241,23 @@ const eventbtnLoadGuides = () => {
             loadDATAGuides();
 
             intervalLoadDATAGuides = setInterval(goGuides, 1000);
+        })
+    }
+
+}
+const eventbtnLoadApplication = () => {
+    let btnLoadApplication = document.querySelectorAll('.btnLoadApplication')
+
+    // -----------------------------------
+    for (let i = 0; i < btnLoadApplication.length; i++) {
+        btnLoadApplication[i].addEventListener('click', function () {
+            selectedGuideId = btnLoadApplication[i].id;
+            let selectedGuideName = DataGuides.find(Data => Data.id == selectedGuideId).name;
+            let selectedGuidePrice = DataGuides.find(Data => Data.id == selectedGuideId).pricePerHour;
+            let fioGuideApplication = document.querySelector('.fioGuideApplication');
+            let nameRouteApplication = document.querySelector('.nameRouteApplication');
+            fioGuideApplication.textContent = selectedGuideName;
+            nameRouteApplication.textContent = selectedRouteName;
         })
     }
 

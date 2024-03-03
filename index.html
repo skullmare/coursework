@@ -19,11 +19,73 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
-                    <button type="button" class="btn btn-primary">Отправить</button>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col fw-bold">ФИО гида:</div>
+                            <div class="col fioGuideApplication"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col fw-bold">Название маршрута:</div>
+                            <div class="col nameRouteApplication"></div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-4">Дата экскурсии: <div><input class="form-control" type="date"></div>
+                            </div>
+                            <div class="col-4">Время начала: <div><input class="form-control" type="time"></div>
+                            </div>
+                            <div class="col-4">Длительность: <div>
+                                <select class="form-select" name="" id="">
+                                    <option value="1">1 час</option>
+                                    <option value="2">2 часа</option>
+                                    <option value="3">3 часа</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-4">Количество человек: <div><input class="form-control" type="number" min="1"></div>
+                            </div>
+                        </div>
+                        <div class="row fw-bold p-2">
+                            Дополнительные опции:
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="row p-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-check-label" for="gridCheck1">
+                                            Скидка 15%
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row px-2">
+                                    Скидку для школьников и студентов. При выборе чекбокса стоимость
+                                    уменьшается на 15%.
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row p-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck2">
+                                        <label class="form-check-label" for="gridCheck2">
+                                            Тематические сувениры
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row px-2">
+                                    Тематические сувениры для посетителей. Стоимость увеличивается на 500 рублей для
+                                    каждого посетителя.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row fw-bold p-2">
+                            Итоговая стоимость:
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
+                        <button type="button" class="btn btn-primary">Отправить</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +127,7 @@
                 <div class="col-xl-6 py-5">
                     <img src="img/about-photo.jpeg" class="img-fluid img-thumbnail" alt="">
                 </div>
-                <div class="col-xl-6 pb-5">
+                <div class="col-xl-6 py-5">
                     <div class="title display-1">О нас</div>
                     <div class="text fs-5">
                         TravelMoscow - Ваш надежный спутник в исследовании Москвы!
@@ -180,11 +242,11 @@
     <div class="guidesBlock container">
         <div class="titleGuides text-center display-5 my-5"></div>
         <nav class="d-flex justify-content-between row">
-            <div class="col d-flex">
+            <div class="col-sm-6 d-flex my-2">
                 <div class="w-50 text-end mx-2">Языки экскурсии</div>
                 <select class="selectLanguages form-select"></select>
             </div>
-            <div class="col d-flex">
+            <div class="col-sm-6 d-flex my-2">
                 <div>Опыт работы</div>
                 <div class="d-flex">
                     <div class="mx-2">от</div><input class="fromYears form-control" type="text">
@@ -223,7 +285,8 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Telegram: @jhonbiack</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Email: ostapchuk.ivan.2003@gmail.com</a>
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Email:
+                    ostapchuk.ivan.2003@gmail.com</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Phone:+7(901)597-59-10</a>
@@ -252,7 +315,7 @@
             <td class="language align-middle"></td>
             <td class="workExperience align-middle"></td>
             <td class="pricePerHour align-middle"></td>
-            <td class="align-middle"><input class="btn btn btn-primary " data-bs-toggle="modal"
+            <td class="align-middle"><input class="btn btnLoadApplication btn-primary " data-bs-toggle="modal"
                     data-bs-target="#exampleModal" type="button" value="Выбрать"></td>
         </tr>
     </template>
