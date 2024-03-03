@@ -30,19 +30,19 @@
                         </div>
 
                         <div class="row mt-2">
-                            <div class="col-4">Дата экскурсии: <div><input class="form-control" type="date"></div>
+                            <div class="col-4">Дата экскурсии: <div><input class="inputDate form-control" type="date"></div>
                             </div>
-                            <div class="col-4">Время начала: <div><input class="form-control" type="time"></div>
+                            <div class="col-4">Время начала: <div><input class="inputTime form-control" type="time" list="limittimeslist"></div>
                             </div>
                             <div class="col-4">Длительность: <div>
-                                <select class="form-select" name="" id="">
-                                    <option value="1">1 час</option>
-                                    <option value="2">2 часа</option>
-                                    <option value="3">3 часа</option>
+                                <select class="selectHour form-select" name="" id="">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
                                 </select>
                                 </div>
                             </div>
-                            <div class="col-4">Количество человек: <div><input class="form-control" type="number" min="1"></div>
+                            <div class="col-4">Количество человек: <div><input class="inputNumPersons form-control" type="number" min="1" value="1"></div>
                             </div>
                         </div>
                         <div class="row fw-bold p-2">
@@ -52,7 +52,7 @@
                             <div class="col">
                                 <div class="row p-2">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <input class="checkboxDiscount form-check-input" type="checkbox" id="gridCheck1">
                                         <label class="form-check-label" for="gridCheck1">
                                             Скидка 15%
                                         </label>
@@ -66,7 +66,7 @@
                             <div class="col">
                                 <div class="row p-2">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck2">
+                                        <input class="checkboxSouvenirs form-check-input" type="checkbox" id="gridCheck2">
                                         <label class="form-check-label" for="gridCheck2">
                                             Тематические сувениры
                                         </label>
@@ -78,8 +78,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row fw-bold p-2">
-                            Итоговая стоимость:
+                        <div class="totalCost row fw-bold p-2">
+                            Итоговая стоимость: 0
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -243,16 +243,16 @@
         <div class="titleGuides text-center display-5 my-5"></div>
         <nav class="d-flex justify-content-between row">
             <div class="col-sm-6 d-flex my-2">
-                <div class="w-50 text-end mx-2">Языки экскурсии</div>
+                <div class="w-50 text-end mx-2 pt-1">Языки экскурсии</div>
                 <select class="selectLanguages form-select"></select>
             </div>
             <div class="col-sm-6 d-flex my-2">
-                <div>Опыт работы</div>
+                <div class="pt-1">Опыт работы</div>
                 <div class="d-flex">
-                    <div class="mx-2">от</div><input class="fromYears form-control" type="text">
+                    <input class="fromYears form-control mx-2" type="text" placeholder="от">
                 </div>
                 <div class="d-flex">
-                    <div class="mx-2">до</div><input class="toYears form-control" type="text">
+                    <input class="toYears form-control mx-2" type="text" placeholder="до">
                 </div>
             </div>
         </nav>
@@ -278,7 +278,7 @@
                 </tbody>
             </table>
         </div>
-    </div>\<a id="contacts" href=""></a>
+    </div><a id="contacts" href=""></a>
     <footer class="py-5 mt-5">
         <ul class="nav justify-content-center">
             <li class="nav-item">
