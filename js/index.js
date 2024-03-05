@@ -42,14 +42,8 @@ function goIndex() {
 
 
     let intervalLoadDATARoutes = setInterval(goRoutes, 1000)
-
-
     function goRoutes() {
         if (DataRoutes != null) {
-
-
-            // -----------------------------------
-
             if (searchRoutesName != null) {
                 DataRoutesSearch = DataRoutes.filter(function (DataRoutes) {
                     return DataRoutes.name.includes(searchRoutesName);
@@ -61,24 +55,12 @@ function goIndex() {
             } else {
                 DataRoutesSearch = null;
             }
-
-
-
-            // -----------------------------------
             if (DataRoutesSearch != null) {
                 renderRoutesGo(DataRoutesSearch)
             }
             else {
                 renderRoutesGo(DataRoutes)
             }
-
-            // -----------------------------------
-
-
-
-
-
-            // -----------------------------------
             clearInterval(intervalLoadDATARoutes);
         }
     }
@@ -164,11 +146,8 @@ function goIndex() {
             }
             catch {
             }
-
-
         }
         eventbtnLoadGuides();
-        // -----------------------------------
     }
 
 
@@ -445,6 +424,13 @@ function goIndex() {
     }
 
     function clearModal() {
+        selectedDate = null
+        selectedTime = null
+        selectedHour = 1
+        numPerson = 1
+        discount = false
+        souvenirs = false
+        TotalCost = null
         inputDate.value = ''
         inputTime.value = ''
         inputNumPersons.value = 1
