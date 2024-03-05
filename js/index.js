@@ -447,12 +447,12 @@ function goIndex() {
     function clearModal() {
         inputDate.value = ''
         inputTime.value = ''
-        divTotalCost.textContent = 'Итоговая стоимость: 0 ₽'
         inputNumPersons.value = 1
         selectHour.value = 1
         checkboxDiscount.checked = false
         checkboxSouvenirs.checked = false
         calcTotalCost()
+        divTotalCost.textContent = `Итоговая стоимость: ${selectedGuidePrice} ₽`
     }
 
     // функция усечения текста
