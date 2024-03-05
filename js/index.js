@@ -283,9 +283,11 @@ function goIndex() {
     let thisDay = null;
     let selectedDate = null;
     let inputDate = document.querySelector('.inputDate');
+    inputDate.min = new Date().toLocaleDateString('fr-ca');
     inputDate.addEventListener('input', function () {
         selectedDate = new Date(inputDate.value)
         thisDay = selectedDate.getDay()
+        selectedDate = inputDate.value
         calcTotalCost()
     })
 
@@ -298,7 +300,6 @@ function goIndex() {
         selectedTime = inputTime.value
         let timeArray = selectedTime.split(":");
         thisHour = parseInt(timeArray[0])
-        console.log(thisHour)
         calcTotalCost()
     })
 
@@ -315,7 +316,7 @@ function goIndex() {
 
 
 
-    let numPerson = 0;
+    let numPerson = 1;
     let inputNumPersons = document.querySelector('.inputNumPersons');
     inputNumPersons.addEventListener('input', function () {
         numPerson = inputNumPersons.value
@@ -325,14 +326,14 @@ function goIndex() {
 
 
 
-    let discount = 1;
+    let discount = false;
     let checkboxDiscount = document.querySelector('.checkboxDiscount');
     checkboxDiscount.addEventListener('input', function () {
         if (checkboxDiscount.checked) {
-            discount = 0.85
+            discount = true;
         }
         else {
-            discount = 0
+            discount = false;
         }
         calcTotalCost()
     })
@@ -352,10 +353,11 @@ function goIndex() {
         calcTotalCost()
     })
 
-
+    let divTotalCost = document.querySelector('.totalCost')
     let TotalCost = null;
     function calcTotalCost() {
         let souvenirsCost = 0
+        let discountCoef = 1
         if (souvenirs == true) {
             souvenirsCost = 500 * numPerson;
         }
@@ -377,18 +379,81 @@ function goIndex() {
         } else if (numPerson >= 10 && numPerson <= 20) {
             numberOfVisitors = 1500
         }
+        if (discount == true) {
+            discountCoef = 0.85
+        } else {
+            discountCoef = 1
+        }
 
 
 
         TotalCost = Math.round((selectedGuidePrice * parseInt(selectedHour) * isThisDayOff
-            + isItMorning + isItEvening + numberOfVisitors + souvenirsCost) * discount);
+            + isItMorning + isItEvening + numberOfVisitors + souvenirsCost) * discountCoef);
 
 
-        let divTotalCost = document.querySelector('.totalCost')
+
         divTotalCost.textContent = ('Итоговая стоимость: ' + TotalCost + ' ₽')
 
     }
 
+    let alertSuccess = document.querySelector('.alert-success')
+    let alertDanger = document.querySelector('.alert-danger')
+
+    let btnSend = document.querySelector('.send')
+    btnSend.addEventListener('click', function () {
+        const formdata = new FormData();
+        formdata.append("guide_id", selectedGuideId);
+        formdata.append("route_id", selectedRouteId);
+        formdata.append("date", selectedDate);
+        formdata.append("time", selectedTime);
+        formdata.append("duration", selectedHour);
+        formdata.append("persons", numPerson);
+        formdata.append("price", TotalCost);
+        formdata.append("optionFirst", souvenirs);
+        formdata.append("optionSecond", discount);
+
+        const requestOptions = {
+            method: "POST",
+            body: formdata,
+            redirect: "follow"
+        };
+        fetch(`http://exam-2023-1-api.std-900.ist.mospolytech.ru/api/orders?api_key=${API}`, requestOptions)
+            .then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    alertDanger.classList.add('hidden')
+                    alertSuccess.classList.remove('hidden')
+                    clearModal()
+                    setTimeout(function () {
+                        alertSuccess.classList.add('hidden')
+                    }, 3000)
+                } else {
+                    alertSuccess.classList.add('hidden')
+                    alertDanger.classList.remove('hidden')
+                    setTimeout(function () {
+                        alertDanger.classList.add('hidden')
+                    }, 3000)
+                }
+            })
+
+
+    })
+    let btnClearModal = document.querySelectorAll('.btnClearModal')
+    for (let i = 0; i < btnClearModal.length; i++) {
+        btnClearModal[i].addEventListener('click', function () {
+            clearModal()
+        })
+    }
+
+    function clearModal() {
+        inputDate.value = ''
+        inputTime.value = ''
+        divTotalCost.textContent = 'Итоговая стоимость: 0 ₽'
+        inputNumPersons.value = 1
+        selectHour.value = 1
+        checkboxDiscount.checked = false
+        checkboxSouvenirs.checked = false
+        calcTotalCost()
+    }
 
     // функция усечения текста
     function truncate(str, max) {

@@ -15,3 +15,6 @@
 footer {
     background: ghostwhite;
 }
+.hidden {
+    display: none;
+}

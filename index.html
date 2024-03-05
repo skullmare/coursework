@@ -11,14 +11,21 @@
 </head>
 
 <body>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Оформление заявки</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    <h5 class="modal-title" id="staticBackdropLabel">Оформление заявки</h5>
+                    <button type="button" class="btn-close btnClearModal" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-success hidden" role="alert">
+                        Ваша заявка оформлена :)
+                    </div>
+                    <div class="alert alert-danger hidden" role="alert">
+                        Ваша заявка отклонена :(
+                    </div>
                     <div class="container">
                         <div class="row">
                             <div class="col fw-bold">ФИО гида:</div>
@@ -30,19 +37,55 @@
                         </div>
 
                         <div class="row mt-2">
-                            <div class="col-4">Дата экскурсии: <div><input class="inputDate form-control" type="date"></div>
-                            </div>
-                            <div class="col-4">Время начала: <div><input class="inputTime form-control" type="time" list="limittimeslist"></div>
-                            </div>
-                            <div class="col-4">Длительность: <div>
-                                <select class="selectHour form-select" name="" id="">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
+                            <div class="col-4">Дата экскурсии: <div><input class="inputDate form-control" type="date">
                                 </div>
                             </div>
-                            <div class="col-4">Количество человек: <div><input class="inputNumPersons form-control" type="number" min="1" value="1"></div>
+                            <div class="col-4">Время начала:
+                                <div>
+                                    <input class="inputTime form-control" list="limittimeslist" placeholder="--:--">
+                                    <datalist id="limittimeslist">
+                                        <option value="09:00"></option>
+                                        <option value="09:30"></option>
+                                        <option value="10:00"></option>
+                                        <option value="10:30"></option>
+                                        <option value="11:00"></option>
+                                        <option value="11:30"></option>
+                                        <option value="12:00"></option>
+                                        <option value="12:30"></option>
+                                        <option value="13:00"></option>
+                                        <option value="13:30"></option>
+                                        <option value="14:00"></option>
+                                        <option value="14:30"></option>
+                                        <option value="15:00"></option>
+                                        <option value="15:30"></option>
+                                        <option value="16:00"></option>
+                                        <option value="16:30"></option>
+                                        <option value="17:00"></option>
+                                        <option value="17:30"></option>
+                                        <option value="18:00"></option>
+                                        <option value="18:30"></option>
+                                        <option value="19:00"></option>
+                                        <option value="19:30"></option>
+                                        <option value="20:00"></option>
+                                        <option value="20:30"></option>
+                                        <option value="21:00"></option>
+                                        <option value="21:30"></option>
+                                        <option value="22:00"></option>
+                                        <option value="22:30"></option>
+                                        <option value="23:00"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+                            <div class="col-4">Длительность: <div>
+                                    <select class="selectHour form-select" name="" id="">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4">Количество человек: <div><input class="inputNumPersons form-control"
+                                        type="number" min="1" max="20" value="1" required></div>
                             </div>
                         </div>
                         <div class="row fw-bold p-2">
@@ -52,7 +95,8 @@
                             <div class="col">
                                 <div class="row p-2">
                                     <div class="form-check">
-                                        <input class="checkboxDiscount form-check-input" type="checkbox" id="gridCheck1">
+                                        <input class="checkboxDiscount form-check-input" type="checkbox"
+                                            id="gridCheck1">
                                         <label class="form-check-label" for="gridCheck1">
                                             Скидка 15%
                                         </label>
@@ -66,7 +110,8 @@
                             <div class="col">
                                 <div class="row p-2">
                                     <div class="form-check">
-                                        <input class="checkboxSouvenirs form-check-input" type="checkbox" id="gridCheck2">
+                                        <input class="checkboxSouvenirs form-check-input" type="checkbox"
+                                            id="gridCheck2">
                                         <label class="form-check-label" for="gridCheck2">
                                             Тематические сувениры
                                         </label>
@@ -82,10 +127,11 @@
                             Итоговая стоимость: 0
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
-                        <button type="button" class="btn btn-primary">Отправить</button>
-                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btnClearModal btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
+                    <button type="button" class="send btn btn-primary">Отправить</button>
                 </div>
             </div>
         </div>
@@ -315,8 +361,8 @@
             <td class="language align-middle"></td>
             <td class="workExperience align-middle"></td>
             <td class="pricePerHour align-middle"></td>
-            <td class="align-middle"><input class="btn btnLoadApplication btn-primary " data-bs-toggle="modal"
-                    data-bs-target="#exampleModal" type="button" value="Выбрать"></td>
+            <td class="align-middle"><input type="submit" class="btn btn-primary btnLoadApplication"
+                    data-bs-toggle="modal" data-bs-target="#staticBackdrop" value="Выбрать"></td>
         </tr>
     </template>
     <template id="optionLanguage">
